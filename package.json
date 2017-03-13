@@ -1,16 +1,15 @@
 {
-  "name": "redux-simple-starter",
+  "name": "nutricompare",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Web app to compare various foods' nutritional information",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "git@github.com:AmanteReale/nutricompare.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Amante Reale",
+  "license": "GNU v3.0",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
