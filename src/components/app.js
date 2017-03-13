@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Search from './search';
 
 export default class App extends Component {
-  render() {
-    return (
-      <div>
-          <h1>Nutri-Compare</h1>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <div className="row">
+                    <div className="col-md-7">
+                        <h1>NutriCompare</h1>
+                    </div>
+                    <Search />
+                </div>
+                {this.props.children}
+            </div>
+        );
+    }
 }
