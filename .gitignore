@@ -1,4 +1,5 @@
 /node_modules
+/sketches
 bundle.js
 npm-debug.log
 src/api-key.js
