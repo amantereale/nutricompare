@@ -75,86 +75,82 @@ class Results extends Component {
         }
     }
 
-    renderValueFor(row, nutrient_id) {
-        var entry = _.find(row.report.food.nutrients, function(f) { return f.nutrient_id == nutrient_id });
+    renderRowFor(row, nutrient_ids) {
+        var food = row.report.food;
 
-        if (entry == null) return '-';
-        else return entry.value;
+        var nutrients = nutrient_ids.map((nutrient_id) => {
+            return (
+                <td key={nutrient_id}>{this.renderValueFor(row, nutrient_id)}</td>
+            )
+        });
+
+        return (
+            <tr key={food.ndbno}>
+                <td>{food.name}</td>
+                {nutrients}
+            </tr>
+        );
     }
+
+    renderValueFor(row, nutrient_id) {
+        var entry = _.find(row.report.food.nutrients, function(f) {
+            return f.nutrient_id == nutrient_id
+        });
+
+        if (entry == null)
+            return '-';
+        else
+            return entry.value;
+        }
 
     renderResults() {
         return this.props.nutritionData.map((entry) => {
             if (this.props.selectedTab === 1) {
-                return (
-                    <tr key={entry.report.food.ndbno}>
-                        <td>{entry.report.food.name}</td>
-                        <td>{this.renderValueFor(entry, 208)}</td>
-                        <td>{this.renderValueFor(entry, 255)}</td>
-                        <td>{this.renderValueFor(entry, 203)}</td>
-                        <td>{this.renderValueFor(entry, 204)}</td>
-                        <td>{this.renderValueFor(entry, 205)}</td>
-                        <td>{this.renderValueFor(entry, 269)}</td>
-                        <td>{this.renderValueFor(entry, 291)}</td>
-                    </tr>
-                );
+                return (this.renderRowFor(entry, [
+                    208,
+                    255,
+                    203,
+                    204,
+                    205,
+                    269,
+                    291
+                ]));
             } else if (this.props.selectedTab === 2) {
-                return (
-                    <tr key={entry.report.food.ndbno}>
-                        <td>{entry.report.food.name}</td>
-                        <td>{this.renderValueFor(entry, 301)}</td>
-                        <td>{this.renderValueFor(entry, 303)}</td>
-                        <td>{this.renderValueFor(entry, 304)}</td>
-                        <td>{this.renderValueFor(entry, 305)}</td>
-                        <td>{this.renderValueFor(entry, 306)}</td>
-                        <td>{this.renderValueFor(entry, 307)}</td>
-                        <td>{this.renderValueFor(entry, 309)}</td>
-                    </tr>
-                );
+                return (this.renderRowFor(entry, [
+                    301,
+                    303,
+                    304,
+                    305,
+                    306,
+                    307,
+                    309
+                ]));
             } else if (this.props.selectedTab === 3) {
-                return (
-                    <tr key={entry.report.food.ndbno}>
-                        <td>{entry.report.food.name}</td>
-                        <td>{this.renderValueFor(entry, 401)}</td>
-                        <td>{this.renderValueFor(entry, 404)}</td>
-                        <td>{this.renderValueFor(entry, 405)}</td>
-                        <td>{this.renderValueFor(entry, 406)}</td>
-                        <td>{this.renderValueFor(entry, 415)}</td>
-                        <td>{this.renderValueFor(entry, 435)}</td>
-                        <td>{this.renderValueFor(entry, 418)}</td>
-                        <td>{this.renderValueFor(entry, 320)}</td>
-                        <td>{this.renderValueFor(entry, 318)}</td>
-                        <td>{this.renderValueFor(entry, 323)}</td>
-                        <td>{this.renderValueFor(entry, 328)}</td>
-                        <td>{this.renderValueFor(entry, 324)}</td>
-                        <td>{this.renderValueFor(entry, 430)}</td>
-                    </tr>
-                );
+                return (this.renderRowFor(entry, [
+                    401,
+                    404,
+                    405,
+                    406,
+                    415,
+                    435,
+                    418,
+                    320,
+                    318,
+                    323,
+                    328,
+                    324,
+                    430
+                ]));
             } else if (this.props.selectedTab === 4) {
-                return (
-                    <tr key={entry.report.food.ndbno}>
-                        <td>{entry.report.food.name}</td>
-                        <td>{this.renderValueFor(entry, 606)}</td>
-                        <td>{this.renderValueFor(entry, 645)}</td>
-                        <td>{this.renderValueFor(entry, 646)}</td>
-                        <td>{this.renderValueFor(entry, 605)}</td>
-                        <td>{this.renderValueFor(entry, 601)}</td>
-                    </tr>
-                );
+                return (this.renderRowFor(entry, [606, 645, 646, 605, 601]));
             } else if (this.props.selectedTab === 5) {
-                return (
-                    <tr key={entry.report.food.ndbno}>
-                        <td>{entry.report.food.name}</td>
-                        <td>{this.renderValueFor(entry, 262)}</td>
-                    </tr>
-                );
+                return (this.renderRowFor(entry, [262]));
             }
         });
     }
 
     render() {
         if (this.props.nutritionData.length > 0) {
-            console.log(this.props.nutritionData);
-
             return (
                 <div>
                     <div>All values are per 100g</div>
