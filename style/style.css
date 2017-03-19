@@ -73,3 +73,7 @@ label {
 .react-autosuggest__suggestion--highlighted {
   background-color: #ddd;
 }
+
+.nutriTabs {
+    margin-top: 10px;
+}

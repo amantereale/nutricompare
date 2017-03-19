@@ -4,6 +4,7 @@ import { showLoading } from 'react-redux-loading-bar';
 import {store} from '../index';
 
 export const FETCH_QUICKSEARCH_NUTRITION = 'FETCH_NUTRITION';
+export const SELECT_TAB = 'SELECT_TAB';
 
 const REPORT_URL = `https://api.nal.usda.gov/ndb/reports/?type=b&format=json&api_key=${API_KEY}`;
 const FOOD_SEARCH_URL = ``
@@ -17,4 +18,11 @@ export function fetchQuickSearchNutrition(ndbno) {
         type: FETCH_QUICKSEARCH_NUTRITION,
         payload: request
     };
+}
+
+export function selectTab(tabId) {
+    return {
+        type: SELECT_TAB,
+        payload: tabId
+    }
 }
