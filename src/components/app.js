@@ -15,6 +15,7 @@ export default class App extends Component {
                         </div>
                         <Search/>
                     </div>
+                    <div>All values are per 100g</div>
                     {this.props.children}
                 </div>
             </div>

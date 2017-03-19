@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Results from './results';
 
 class Compare extends Component {
   render() {
     return (
       <div>
-          compare goes here
+          <Results />
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import {showLoading, hideLoading} from 'react-redux-loading-bar';
 import {connect} from 'react-redux';
 import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
@@ -69,7 +69,10 @@ class Search extends Component {
     onSearchSubmit(e) {
         e.preventDefault();
 
-        this.props.fetchQuickSearchNutrition(this.state.ndbno).then(() => { this.props.hideLoading() });
+        this.props.fetchQuickSearchNutrition(this.state.ndbno).then(() => {
+            this.props.hideLoading();
+            this.setState({'quickSearchTerm': ''});
+        });
     }
 
     render() {
@@ -87,7 +90,7 @@ class Search extends Component {
                         <div className="input-group">
                             <Autosuggest suggestions={this.state.suggestions} onSuggestionsFetchRequested={(e) => this.onSuggestionsFetchRequested(e.value)} onSuggestionsClearRequested={() => this.onSuggestionsClearRequested()} getSuggestionValue={(e) => this.getSuggestionValue(e)} renderSuggestion={this.renderSuggestion} inputProps={inputProps}/>
                             <span className="input-group-btn">
-                                <button type="submit" className="btn btn-primary" disabled={this.state.ndbno == ''}>Go!</button>
+                                <button type="submit" className="btn btn-primary" disabled={this.state.ndbno == ''}>Add!</button>
                             </span>
                         </div>
                     </div>
